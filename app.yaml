@@ -4,5 +4,8 @@ runtime: python
 api_version: 1
 
 handlers:
-- url: .*
+- url: /poll
   script: main.py
+- url: /crossdomain.xml
+  static_files: static/crossdomain.xml
+  upload: static/crossdomain.xml
