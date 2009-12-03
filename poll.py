@@ -21,6 +21,7 @@ class TweetUser(db.Model):
   geo = db.GeoPtProperty()
   name = db.StringProperty()
   profile_image = db.StringProperty()
+  banned = db.BooleanProperty()
 
 class Tweet(db.Model):
   user = db.ReferenceProperty(TweetUser, collection_name="tweets")
@@ -45,7 +46,7 @@ class PollHandler(webapp.RequestHandler):
     self.update_twitter_locations()
     self.update_geocoded_locations()
     
-    result = db.GqlQuery("SELECT * FROM Tweet");
+    result = db.GqlQuery("SELECT * FROM Tweet ORDER BY time DESC");
     self.response.headers['Content-Type'] = 'application/json'
     self.response.out.write(GqlEncoder().encode(result))
   

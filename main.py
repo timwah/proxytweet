@@ -5,6 +5,7 @@ import wsgiref.handlers
 
 from google.appengine.ext import webapp
 from poll import PollHandler
+from stats import StatsHandler
 
 class MainHandler(webapp.RequestHandler):
 
@@ -14,7 +15,8 @@ class MainHandler(webapp.RequestHandler):
 
 def main():
   application = webapp.WSGIApplication([('/', MainHandler),
-                                        ('/poll', PollHandler)],
+                                        ('/poll', PollHandler),
+                                        ('/stats', StatsHandler)],
                                        debug=True)
                                        
   wsgiref.handlers.CGIHandler().run(application)

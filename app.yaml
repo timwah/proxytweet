@@ -6,6 +6,8 @@ api_version: 1
 handlers:
 - url: /poll
   script: main.py
+- url: /stats
+  script: main.py
 - url: /crossdomain.xml
   static_files: static/crossdomain.xml
   upload: static/crossdomain.xml
